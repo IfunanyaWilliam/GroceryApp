@@ -93,7 +93,7 @@ namespace GroceryApp.Areas.Admin.Controllers
             }
             _unitOfWork.Category.Delete(category);
             _unitOfWork.Save();
-            TempData["success"] = "Category Delete Done!";
+            TempData["success"] = "Category Deleted";
             return RedirectToAction("Index");
         }
 
