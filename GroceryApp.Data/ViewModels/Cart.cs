@@ -19,7 +19,7 @@ namespace GroceryApp.Models
         public string ApplicationUserId { get; set; }
         
         [ValidateNever]
-        public ApplicationUser ApplicationUser { get; set; }
+        public AppUser ApplicationUser { get; set; }
 
         public int Count { get; set; }
     }

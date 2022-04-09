@@ -9,7 +9,7 @@ namespace GroceryApp.Data.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ApplicationDbContext _context;
+        private ApplDbContext _context;
         public ICategoryRepository Category { get; set; }
         public IProductRepository Product { get; set; }
 
@@ -19,7 +19,7 @@ namespace GroceryApp.Data.Repositories
 
         //public IOrderDetailRepository OrderDetail { get; set; }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplDbContext context)
         {
             _context = context;
             Category = new CategoryRepository(context);

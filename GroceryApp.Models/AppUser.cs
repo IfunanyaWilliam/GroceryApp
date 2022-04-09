@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class AppUser : IdentityUser
     {
         [Required]
         public string Name { get; set; }

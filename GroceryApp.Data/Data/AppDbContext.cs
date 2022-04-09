@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Data.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public ApplDbContext(DbContextOptions<ApplDbContext> options) : base(options)
         {
 
         }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; } 
+        public DbSet<Cart>  Carts { get; set; }
+
     }
 }

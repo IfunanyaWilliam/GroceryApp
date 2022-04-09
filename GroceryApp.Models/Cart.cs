@@ -17,10 +17,10 @@ namespace GroceryApp.Data.ViewModels
         public Product Product { get; set; }
         
         [ValidateNever]
-        public string ApplicationUserId { get; set; }
+        public string AppUserId { get; set; }
         
         [ValidateNever]
-        public ApplicationUser ApplicationUser { get; set; }
+        public AppUser AppUser { get; set; }
 
         public int Count { get; set; }
     }

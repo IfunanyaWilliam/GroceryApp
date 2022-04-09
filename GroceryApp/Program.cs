@@ -10,11 +10,11 @@ builder.Services.AddControllersWithViews();
 
 //Add a Service for EntityFrameworkCore. 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<ApplDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplDbContext>();
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
