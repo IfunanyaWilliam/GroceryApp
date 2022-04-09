@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Data.Repositories
 {
-    public class UnitOfWork : IUnitOfWork
+    public class Factory : IUnitOfWork
     {
-        private ApplDbContext _context;
+        private AppDbContext _context;
         public ICategoryRepository Category { get; set; }
         public IProductRepository Product { get; set; }
 
@@ -19,7 +19,7 @@ namespace GroceryApp.Data.Repositories
 
         //public IOrderDetailRepository OrderDetail { get; set; }
 
-        public UnitOfWork(ApplDbContext context)
+        public Factory(AppDbContext context)
         {
             _context = context;
             Category = new CategoryRepository(context);
