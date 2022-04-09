@@ -86,7 +86,7 @@ namespace GroceryApp.Areas.Admin.Controllers
                 if (file != null)
                 {
                     string uploadDir = Path.Combine(_hostingEnvironment.WebRootPath, "ProductImage");
-                    fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
+                    fileName = Guid.NewGuid().ToString().Substring(0,8) + "-" + file.FileName;
                     string filePath = Path.Combine(uploadDir, fileName);
                     if (vm.Product.ImageUrl != null)
                     {

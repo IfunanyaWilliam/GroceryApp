@@ -25,6 +25,8 @@
     </thead>
     <tbody>
        
+        if(@Model.Products is not null)
+        {
             @foreach(var item in Model.Products)
             {
                 <tr>
@@ -42,7 +44,11 @@
                 </td>
                 </tr>
             }
-        
+        }else{
+            <tr>
+                <td colspan="5">No Available Product</td>
+            </tr>
+        }
     </tbody>
 </table>
 

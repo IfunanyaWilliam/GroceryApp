@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GroceryApp.Models\GroceryApp.Models.csproj" />
+    <ProjectReference Include="..\GroceryApp.Utility\GroceryApp.Utility.csproj" />
   </ItemGroup>
 
 </Project>

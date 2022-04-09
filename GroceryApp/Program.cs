@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using GroceryApp.Data.Data;
 using GroceryApp.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +10,21 @@ builder.Services.AddControllersWithViews();
 
 //Add a Service for EntityFrameworkCore. 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+//Add Razor Page
+builder.Services.AddRazorPages();
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline. 
 if (!app.Environment.IsDevelopment())
@@ -27,11 +38,24 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+//SeedData();
+app.UseAuthentication();
 app.UseAuthorization();
+
+//Add RazorPage Map
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+//void SeedData()
+//{
+//    using(var scope = app.Services.CreateAsyncScope())
+//    {
+//        var InitializeDB = scope.ServiceProvider.GetRequiredService<IDbinit>();
+//        InitializeDB.Init();
+//    }
+//}
