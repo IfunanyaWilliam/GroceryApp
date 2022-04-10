@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Data.Repositories
 {
-    public interface IOrder : IRepository<Order>
+    public interface IOrderRepository : IRepository<Order>
     {
-        void Update(IOrder order);
+        void Update(Order order);
         void UpdateStatus(int id, string orderStatus, string? paymentStatus = null);
         void PaymentStatus(int id, string sessionId, string paymentIntentId);
     }
