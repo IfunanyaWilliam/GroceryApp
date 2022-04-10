@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using GroceryApp.Data.Data;
 using GroceryApp.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
+using GroceryApp.Data.Contracts;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using GroceryApp.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +22,12 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 
 //Add service for the factory
 builder.Services.AddScoped<IFactory, Factory>();
-builder.Services.AddScoped<IRoleInit, RoleInitRepositry>();
+
+//Add services for Role and Authentication
+builder.Services.AddScoped<IRoleInit, RoleInitRepository>();
+
+//Add service for Sending Email
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 //Add Razor Page
 builder.Services.AddRazorPages();

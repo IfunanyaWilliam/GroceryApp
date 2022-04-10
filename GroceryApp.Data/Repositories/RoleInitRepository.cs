@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GroceryApp.Data.Repositories
 {
-    public class RoleInitRepositry : IRoleInit
+    public class RoleInitRepository : IRoleInit
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly AppDbContext _context;
 
-        public RoleInitRepositry(UserManager<IdentityUser> userManager,
+        public RoleInitRepository(UserManager<IdentityUser> userManager,
                                 RoleManager<IdentityRole> roleManager, 
                                 AppDbContext context)
         {

@@ -19,7 +19,7 @@ namespace GroceryApp.Data.Repositories
         }
         public void Update(OrderDetail orderDetail)
         {
-            _context.OrderDetails.Update(orderDetail);
+            _context.OrderDetails.Update(orderDetail); 
             //var categoryDb = _context.Categories.FirstOrDefault( x => x.Id = orderDetail.Id );
             //if(categoryDb != null)
             //{
