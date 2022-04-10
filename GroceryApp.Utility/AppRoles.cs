@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Utility
 {
-    public static class WebSiteRole
+    public static class AppRoles
     {
         public const string Role_User = "Customer";
         public const string Role_Staff = "Staff";

@@ -36,11 +36,11 @@ namespace GroceryApp.Data.Repositories
                 throw;
             }
 
-            if (!_roleManager.RoleExistsAsync(WebSiteRole.Role_Admin).GetAwaiter().GetResult())
+            if (!_roleManager.RoleExistsAsync(AppRoles.Role_Admin).GetAwaiter().GetResult())
             {
-                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Admin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_User)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Staff)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_Admin)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_User)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_Staff)).GetAwaiter().GetResult();
 
                 _userManager.CreateAsync(new AppUser
                 {
@@ -54,7 +54,7 @@ namespace GroceryApp.Data.Repositories
                 }, "Admin@123").GetAwaiter().GetResult();
 
                 AppUser user = _context.AppUsers.FirstOrDefault(x => x.Email == "admin@gmail.com");
-                _userManager.AddToRoleAsync(user, WebSiteRole.Role_Admin).GetAwaiter().GetResult();
+                _userManager.AddToRoleAsync(user, AppRoles.Role_Admin).GetAwaiter().GetResult();
             }
             return;
 

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Models
 {
-    internal class OrderHeader
+    public class Order
     {
+
     }
 }
