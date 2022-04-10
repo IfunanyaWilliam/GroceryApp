@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GroceryApp.Data.Repositories
+namespace GroceryApp.Data.Contracts
 {
     public interface IRoleInit
     {

@@ -1,11 +1,12 @@
 ﻿using GroceryApp.Models;
+using GroceryApp.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GroceryApp.Data.Repositories
+namespace GroceryApp.Data.Contracts
 {
     public interface IOrderRepository : IRepository<Order>
     {

@@ -1,4 +1,5 @@
 ﻿using GroceryApp.Data.Data;
+using GroceryApp.Data.Contracts;
 using GroceryApp.Models;
 using GroceryApp.Utility;
 using Microsoft.AspNetCore.Identity;

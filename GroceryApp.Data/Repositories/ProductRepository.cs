@@ -1,4 +1,5 @@
-﻿using GroceryApp.Data.Data;
+﻿using GroceryApp.Data.Contracts;
+using GroceryApp.Data.Data;
 using GroceryApp.Models;
 using System;
 using System.Collections.Generic;
