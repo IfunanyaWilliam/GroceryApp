@@ -7,9 +7,9 @@ namespace GroceryApp.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        private IUnitOfWork _unitOfWork;
+        private IFactory _unitOfWork;
 
-        public CategoryController(IUnitOfWork unitOfWork)
+        public CategoryController(IFactory unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

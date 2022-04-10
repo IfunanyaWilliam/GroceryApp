@@ -9,6 +9,6 @@ namespace GroceryApp.Data.Repositories
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        void Update(Category category);
+        void Update(Category category); 
     }
 }

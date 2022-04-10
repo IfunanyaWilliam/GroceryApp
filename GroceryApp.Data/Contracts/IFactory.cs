@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace GroceryApp.Data.Repositories
 {
-    public interface IUnitOfWork 
+    public interface IFactory 
     {
         ICategoryRepository Category { get; }
         IProductRepository Product { get;  }

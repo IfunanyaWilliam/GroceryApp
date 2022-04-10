@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace GroceryApp.Data.Data
 {
-    public class ApplDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext
     {
-        public ApplDbContext(DbContextOptions<ApplDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }

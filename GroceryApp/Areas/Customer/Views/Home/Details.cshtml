@@ -1,4 +1,5 @@
-﻿@model GroceryApp.Models.Cart
+﻿@using System.Text.RegularExpressions
+@model GroceryApp.Models.Cart
 <h1>Product Details</h1>
 <form method="post">
     <div class="row">
@@ -9,7 +10,7 @@
         <div class="col-8">
             <div class="row">
                 <label asp-for="Product.Name">Name: @Model.Product.Name</label>
-                <label asp-for="Product.Description"> Production Description: @Model.Product.Description</label>
+                <label asp-for="Product.Description"> Production Description: @Regex.Replace(@Model.Product.Description , "<.*?>", String.Empty) </label>
                 <label asp-for="Product.Price">Product Price: @Model.Product.Price.ToString(".00")</label>
                 <label asp-for="Product.Category">Product Category: @Model.Product.Category.Name</label>
             

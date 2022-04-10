@@ -11,10 +11,10 @@ namespace GroceryApp.Data.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ApplDbContext _context;
+        private readonly AppDbContext _context;
         private DbSet<T> _dbSet;
 
-        public Repository(ApplDbContext context)
+        public Repository(AppDbContext context)
         {
             _context = context;
             //_context.Products.Include(x =>  x.Category);

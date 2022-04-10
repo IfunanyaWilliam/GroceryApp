@@ -1,13 +1,11 @@
 ﻿using GroceryApp.Data.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GroceryApp.Data.Repositories;
+
+
 
 namespace GroceryApp.Data.Repositories
 {
-    public class Factory : IUnitOfWork
+    public class Factory : IFactory
     {
         private AppDbContext _context;
         public ICategoryRepository Category { get; set; }

@@ -10,9 +10,9 @@ namespace GroceryApp.Data.Repositories
 {
     public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
-        private ApplDbContext _context;
+        private AppDbContext _context;
 
-        public CategoryRepository(ApplDbContext context) : base(context)
+        public CategoryRepository(AppDbContext context) : base(context)
         {
             _context = context;
         }

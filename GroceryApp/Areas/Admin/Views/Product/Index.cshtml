@@ -25,13 +25,13 @@
     </thead>
     <tbody>
        
-        if(@Model.Products is not null)
+        @if(@Model.Products is not null)
         {
             @foreach(var item in Model.Products)
             {
                 <tr>
                     <td>@item.Name</td>
-                    <td>@Regex.Replace(item.Description , "<.*?>", String.Empty) </td>
+                    <td>@Regex.Replace(@item.Description , "<.*?>", String.Empty) </td>
                     <td>@item.Price</td>
                     
                     @if(@item.Category != null)
@@ -44,7 +44,8 @@
                 </td>
                 </tr>
             }
-        }else{
+        }
+        else{
             <tr>
                 <td colspan="5">No Available Product</td>
             </tr>

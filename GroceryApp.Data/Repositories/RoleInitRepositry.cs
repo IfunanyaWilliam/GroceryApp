@@ -6,15 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GroceryApp.Data.Repositories
 {
-    public class RoleInitRepositry 
+    public class RoleInitRepositry : IRoleInit
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly ApplDbContext _context;
+        private readonly AppDbContext _context;
 
         public RoleInitRepositry(UserManager<IdentityUser> userManager,
                                 RoleManager<IdentityRole> roleManager, 
-                                ApplDbContext context)
+                                AppDbContext context)
         {
             _context = context;
             _roleManager = roleManager;
@@ -22,7 +22,7 @@ namespace GroceryApp.Data.Repositories
 
         }
 
-        public async void RoleInit()
+        public void RoleInit()
         {
             try
             {
@@ -38,9 +38,9 @@ namespace GroceryApp.Data.Repositories
 
             if (!_roleManager.RoleExistsAsync(WebSiteRole.Role_Admin).GetAwaiter().GetResult())
             {
-               await _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Admin).GetAwaiter().GetResult());
-                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_User).GetAwaiter().GetResult());
-                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Staff).GetAwaiter().GetResult());
+                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Admin)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_User)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(WebSiteRole.Role_Staff)).GetAwaiter().GetResult();
 
                 _userManager.CreateAsync(new AppUser
                 {
