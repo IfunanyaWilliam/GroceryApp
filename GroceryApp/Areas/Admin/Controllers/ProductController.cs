@@ -1,4 +1,5 @@
 ﻿using GroceryApp.Data.Repositories;
+using GroceryApp.Data.Contracts;
 using GroceryApp.Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -129,7 +130,7 @@ namespace GroceryApp.Areas.Admin.Controllers
         //    {
         //        return NotFound();
         //    }
-        //    var category = _unitOfWork.Category.GetT(x => x.Id == id);
+        //    var category = _ifactory.Category.GetT(x => x.Id == id);
         //    if(category == null)
         //    {
         //        return NotFound();

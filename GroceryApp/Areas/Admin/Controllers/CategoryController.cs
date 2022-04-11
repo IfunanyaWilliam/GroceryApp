@@ -1,23 +1,24 @@
 ﻿using GroceryApp.Data.Repositories;
 using GroceryApp.Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using GroceryApp.Data.Contracts;
 
 namespace GroceryApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        private IFactory _unitOfWork;
+        private IFactory _ifactory;
 
-        public CategoryController(IFactory unitOfWork)
+        public CategoryController(IFactory factory)
         {
-            _unitOfWork = unitOfWork;
+            _ifactory = factory;
         }
 
         public IActionResult Index()
         {
             CategoryVM categoryVM = new CategoryVM();
-            categoryVM.categories = _unitOfWork.Category.GeTAll();
+            categoryVM.categories = _ifactory.Category.GeTAll();
             return View(categoryVM);
         }
 
@@ -31,7 +32,7 @@ namespace GroceryApp.Areas.Admin.Controllers
             }
             else
             {
-                vm.Category = _unitOfWork.Category.GetT(x => x.Id == id);
+                vm.Category = _ifactory.Category.GetT(x => x.Id == id);
                 if(vm.Category == null)
                 {
                     return NotFound();
@@ -51,16 +52,16 @@ namespace GroceryApp.Areas.Admin.Controllers
             {
                 if(vm.Category.Id == 0)
                 {
-                    _unitOfWork.Category.Add(vm.Category);
+                    _ifactory.Category.Add(vm.Category);
                     TempData["success"] = "Category Creation Done!";
                 }
                 else
                 {
-                    _unitOfWork.Category.Update(vm.Category);
+                    _ifactory.Category.Update(vm.Category);
                     TempData["success"] = "Category Update Done!";
                 }
 
-                _unitOfWork.Save();
+                _ifactory.Save();
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
@@ -73,7 +74,7 @@ namespace GroceryApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var category = _unitOfWork.Category.GetT(x => x.Id == id);
+            var category = _ifactory.Category.GetT(x => x.Id == id);
             if(category == null)
             {
                 return NotFound();
@@ -86,13 +87,13 @@ namespace GroceryApp.Areas.Admin.Controllers
 
         public IActionResult DeleteData(int? id)
         {
-            var category = _unitOfWork.Category.GetT(x => x.Id == id);
+            var category = _ifactory.Category.GetT(x => x.Id == id);
             if(category == null)
             {
                 return NotFound();
             }
-            _unitOfWork.Category.Delete(category);
-            _unitOfWork.Save();
+            _ifactory.Category.Delete(category);
+            _ifactory.Save();
             TempData["success"] = "Category Deleted";
             return RedirectToAction("Index");
         }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
+using GroceryApp.Data.Contracts;
 
 namespace GroceryApp.Controllers
 {
@@ -11,18 +12,18 @@ namespace GroceryApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IFactory _unitOfWork;
+        private readonly IFactory _ifactory;
 
-        public HomeController(ILogger<HomeController> logger, IFactory unitOfWork)
+        public HomeController(ILogger<HomeController> logger, IFactory factory)
         {
             _logger = logger;
-            _unitOfWork = unitOfWork;
+            _ifactory = factory;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<Product> products = _unitOfWork.Product.GeTAll(includeProperties: "Category");
+            IEnumerable<Product> products = _ifactory.Product.GeTAll(includeProperties: "Category");
             return View(products);
         }
 
@@ -31,7 +32,7 @@ namespace GroceryApp.Controllers
         {
             Cart cart = new Cart()
             {
-                Product = _unitOfWork.Product.GetT(x => x.Id == productId, includeProperties: "Category"),
+                Product = _ifactory.Product.GetT(x => x.Id == productId, includeProperties: "Category"),
                 Count = 1,
                 ProductId = (int)productId
             };
@@ -49,13 +50,13 @@ namespace GroceryApp.Controllers
         //        var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
         //        cart.ApplicationUserId = claims.Value;
 
-        //        var cartItem = _unitOfWork.Cart.GetT(x => x.Product == cart.ProductId && x.ApplicationUserId == claims.Value);
-                
+        //        var cartItem = _ifactory.Cart.GetT(x => x.Product == cart.ProductId && x.ApplicationUserId == claims.Value);
+
         //        if(cartItem == null)
         //        {
-        //            _unitOfWork.Cart.Add(cart);
-        //            _unitOfWork.Save();
-        //            HttpContext.Session.SetInt32("SessionCart", _unitOfWork.Cart.GetAll(x => x.ApplicationUserId == claims.Value).ToList().Count);
+        //            _ifactory.Cart.Add(cart);
+        //            _ifactory.Save();
+        //            HttpContext.Session.SetInt32("SessionCart", _ifactory.Cart.GetAll(x => x.ApplicationUserId == claims.Value).ToList().Count);
         //        }
         //    }
         //}

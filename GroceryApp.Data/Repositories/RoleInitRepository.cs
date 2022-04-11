@@ -40,7 +40,7 @@ namespace GroceryApp.Data.Repositories
             if (!_roleManager.RoleExistsAsync(AppRoles.Role_Admin).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_Admin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_User)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_Customer)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(AppRoles.Role_Staff)).GetAwaiter().GetResult();
 
                 _userManager.CreateAsync(new AppUser

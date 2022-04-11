@@ -15,7 +15,7 @@ namespace GroceryApp.Data.Contracts
         //ICartRepository Cart {get; }
         //IAppUser AppUser { get; }
         IOrderRepository Order { get; }
-        //IOrderDetailRepository OrderDetail { get; }
+        IOrderDetailRepository OrderDetail { get; }
 
         void Save();
     }

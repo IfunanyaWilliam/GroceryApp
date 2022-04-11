@@ -8,7 +8,7 @@ namespace GroceryApp.Utility
 {
     public static class AppRoles
     {
-        public const string Role_User = "Customer";
+        public const string Role_Customer = "Customer";
         public const string Role_Staff = "Staff";
         public const string Role_Admin = "Admin";
     }
